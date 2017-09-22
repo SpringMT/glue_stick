@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'glue_stick'
+require 'glue_stick/cli'
+
+GlueStick::CLI.start(ARGV)
