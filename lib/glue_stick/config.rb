@@ -5,7 +5,7 @@ module GlueStick
     attr_accessor :task_path
 
     def initialize(_options = {})
-      @task_path = Pathname.new('task')
+      @task_path = Pathname.new('tasks')
     end
   end
 end
