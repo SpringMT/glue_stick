@@ -4,6 +4,7 @@ unless defined?(GlueStick::Capistrano::TASK_LOADED) # prevent multiple loads
   require 'glue_stick'
   require 'fileutils'
   require 'pathname'
+  require 'glue_stick/capistrano/stream_output_interaction_handler'
 
   namespace :glue_stick do
     def capistrano_config
@@ -11,14 +12,12 @@ unless defined?(GlueStick::Capistrano::TASK_LOADED) # prevent multiple loads
     end
 
     desc 'Check daemon settings'
-    task :run, :command do |task, args|
-      command = args[:command]
-      glue_stick = GlueStick.new(command: command)
-
+    task :run, :job do |task, args|
+      job = args[:job]
       # 実行
       on release_roles(capistrano_config.role) do
         within current_path do
-          execute :bundle, "exec glue_stick #{command} --path #{yaml_path}"
+          execute :bundle, "exec glue execute #{job} #{capistrano_config.log_dir}"
         end
       end
     end
