@@ -1,9 +1,8 @@
-deploy:
-  tasks:
-    - name: test
-      description: これは実行する
-      command: echo 'testtetestststst'
-    - name: hoge
-      command: bundle exec rake -T
-    - name: task3
-      description: これはインフラ作業なんでこれをお願いする
+tasks:
+  - name: test
+    description: これは実行する
+    command: echo 'testtetestststst'
+  - name: hoge
+    command: bundle exec rake -T
+  - name: task3
+    description: これはインフラ作業なんでこれをお願いする
